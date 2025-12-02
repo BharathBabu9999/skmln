@@ -5,15 +5,22 @@ function VisitorCounter() {
   const [count, setCount] = useState(null);
 
   useEffect(() => {
-    // Increment and get visitor count using CountAPI
-    fetch('https://api.countapi.xyz/hit/skmln-residential/visits')
-      .then(response => response.json())
-      .then(data => {
-        setCount(data.value);
-      })
-      .catch(error => {
-        console.error('Error fetching visitor count:', error);
-      });
+    // Track visit using our serverless function
+    const trackVisit = async () => {
+      try {
+        const response = await fetch('/api/visits');
+        const data = await response.json();
+        setCount(data.count);
+      } catch (error) {
+        console.error('Error tracking visit:', error);
+        // Fallback to localStorage if API fails
+        const localCount = parseInt(localStorage.getItem('skmln_visits') || '1');
+        localStorage.setItem('skmln_visits', localCount + 1);
+        setCount(localCount);
+      }
+    };
+
+    trackVisit();
   }, []);
 
   return (
