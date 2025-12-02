@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import VisitorCounter from './VisitorCounter';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -48,6 +49,7 @@ function Footer() {
 
         <div className="footer-bottom">
           <p>&copy; {currentYear} Sree Kanaka Maha Lakshmi Nilayam. All rights reserved.</p>
+          <VisitorCounter />
           <p>Built with care for quality living</p>
         </div>
       </div>
