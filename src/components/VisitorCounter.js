@@ -3,25 +3,34 @@ import './VisitorCounter.css';
 
 function VisitorCounter() {
   const [count, setCount] = useState(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    // Track visit using our serverless function
-    const trackVisit = async () => {
+    // Increment and get visitor count using CountAPI
+    const fetchCount = async () => {
       try {
-        const response = await fetch('/api/visits');
+        const response = await fetch('https://api.countapi.xyz/hit/skmln.vercel.app/visits');
+        
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        
         const data = await response.json();
-        setCount(data.count);
+        setCount(data.value);
       } catch (error) {
-        console.error('Error tracking visit:', error);
-        // Fallback to localStorage if API fails
-        const localCount = parseInt(localStorage.getItem('skmln_visits') || '1');
-        localStorage.setItem('skmln_visits', localCount + 1);
-        setCount(localCount);
+        console.error('Error fetching visitor count:', error);
+        setError(true);
+        // Fallback: show a default message instead of loading forever
+        setCount(0);
       }
     };
 
-    trackVisit();
+    fetchCount();
   }, []);
+
+  if (error && count === 0) {
+    return null; // Hide counter if there's an error
+  }
 
   return (
     <div className="visitor-counter">
