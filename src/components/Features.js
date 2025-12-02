@@ -5,42 +5,43 @@ function Features() {
   const features = [
     {
       icon: '🏗️',
-      title: 'Quality Construction',
-      description: 'Built with excellent construction quality and strong materials for long-lasting durability'
+      title: 'Superior Construction Quality',
+      description: 'Constructed with premium grade materials including high-quality cement, steel reinforcement, and modern construction techniques ensuring structural stability and longevity for generations'
     },
     {
       icon: '🌩️',
-      title: 'Perfect Ventilation',
-      description: 'Well-ventilated spaces with east-facing orientation ensuring natural light and fresh air'
+      title: 'Optimal Ventilation & Natural Light',
+      description: 'Strategically designed east-facing apartments with cross-ventilation systems, large windows, and balconies that ensure abundant natural sunlight throughout the day and fresh air circulation'
     },
     {
       icon: '🏡',
-      title: 'Peaceful Neighborhood',
-      description: 'Located in a clean, family-friendly area with decent and peaceful surroundings'
+      title: 'Family-Friendly Peaceful Environment',
+      description: 'Nestled in the serene Sriram Nagar locality known for its clean surroundings, well-maintained roads, friendly neighbors, and safe community atmosphere perfect for families with children'
     },
     {
       icon: '🛡️',
-      title: 'Safe & Secure',
-      description: 'Secure living environment in a well-established residential area'
+      title: 'Safe & Secure Living',
+      description: 'Well-established residential area with organized community living, reliable security measures, proper street lighting, and a strong sense of neighborhood watch for your family\'s peace of mind'
     },
     {
       icon: '✨',
-      title: 'Neat & Clean',
-      description: 'Well-maintained premises with modern amenities and clean spaces'
+      title: 'Well-Maintained Modern Amenities',
+      description: 'Clean and regularly maintained common areas, reliable water supply with storage tanks, modern electrical fittings, quality plumbing fixtures, and spacious well-designed interiors'
     },
     {
       icon: '🏛️',
-      title: 'Prime Location',
-      description: 'Conveniently located on 7th Road, Sriram Nagar, Eluru - Easy access to all amenities'
+      title: 'Strategic Prime Location',
+      description: 'Conveniently located on 7th Road, Sriram Nagar with excellent connectivity to schools, hospitals, markets, banks, entertainment centers, and major transportation routes throughout Eluru city'
     }
   ];
 
   return (
     <section id="features" className="section features-section">
       <div className="container">
-        <h2 className="section-title">Why Choose Us</h2>
+        <h2 className="section-title">Why Choose Sree Kanaka Maha Lakshmi Nilayam</h2>
         <p className="section-subtitle">
-          Experience comfortable living with modern amenities and quality infrastructure
+          Discover the perfect blend of quality construction, modern amenities, strategic location, and peaceful living environment. 
+          Our residential building offers everything your family needs for comfortable and convenient urban living in Eluru.
         </p>
         
         <div className="features-grid">

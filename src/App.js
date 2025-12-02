@@ -1,7 +1,9 @@
 import React from 'react';
 import './App.css';
+import Banner from './components/Banner';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import About from './components/About';
 import Features from './components/Features';
 import Gallery from './components/Gallery';
 import Reviews from './components/Reviews';
@@ -13,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <Banner />
       <Hero />
       
       {/* Ad Slot 1 - After Hero */}
@@ -34,6 +37,9 @@ function App() {
       <AdSlot slotId="ad-slot-4" format="auto" />
       
       <Contact />
+      
+      <About />
+      
       <Footer />
     </div>
   );

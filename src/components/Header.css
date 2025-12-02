@@ -28,6 +28,7 @@
   font-size: 0.75rem;
   font-weight: 400;
   margin-top: -5px;
+  min-width: 219px;
 }
 
 .menu-toggle {
@@ -51,7 +52,6 @@
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: 2rem;
   margin: 0;
 }
 

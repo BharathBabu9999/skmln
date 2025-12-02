@@ -25,9 +25,11 @@ function Contact() {
   return (
     <section id="contact" className="section contact-section">
       <div className="container">
-        <h2 className="section-title">Get In Touch</h2>
+        <h2 className="section-title">Contact Us - Schedule Your Visit Today</h2>
         <p className="section-subtitle">
-          Contact us for more information about available apartments
+          Interested in viewing our quality 2BHK apartments? Get in touch with us to schedule a property visit, 
+          discuss availability, pricing, and learn more about living at Sree Kanaka Maha Lakshmi Nilayam. 
+          Our team is available to answer all your questions and help you find your perfect home in Eluru.
         </p>
         
         <div className="contact-content">
