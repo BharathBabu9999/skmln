@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 function Contact() {
@@ -8,6 +9,7 @@ function Contact() {
     phone: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -18,8 +20,33 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Thank you for your interest! We will contact you soon.');
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    setIsSubmitting(true);
+
+    // EmailJS configuration
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      from_phone: formData.phone,
+      message: formData.message,
+      to_name: 'Sree Kanaka Maha Lakshmi Nilayam',
+    };
+
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log('Email sent successfully!', response.status, response.text);
+        alert('Thank you for your interest! We will contact you soon.');
+        setFormData({ name: '', email: '', phone: '', message: '' });
+        setIsSubmitting(false);
+      })
+      .catch((error) => {
+        console.error('Failed to send email:', error);
+        alert('Sorry, there was an error sending your message. Please call us directly at 9246789369.');
+        setIsSubmitting(false);
+      });
   };
 
   return (
@@ -79,7 +106,7 @@ function Contact() {
           <div className="contact-form-wrapper">
             <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="name">Your Name</label>
+                <label htmlFor="name">Your Name *</label>
                 <input
                   type="text"
                   id="name"
@@ -88,6 +115,7 @@ function Contact() {
                   onChange={handleChange}
                   required
                   placeholder="Enter your name"
+                  minLength="2"
                 />
               </div>
 
@@ -99,13 +127,12 @@ function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  required
                   placeholder="Enter your email"
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="phone">Phone Number</label>
+                <label htmlFor="phone">Phone Number *</label>
                 <input
                   type="tel"
                   id="phone"
@@ -114,11 +141,13 @@ function Contact() {
                   onChange={handleChange}
                   required
                   placeholder="Enter your phone number"
+                  pattern="[0-9]{10}"
+                  title="Please enter a valid 10-digit phone number"
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="message">Message</label>
+                <label htmlFor="message">Message *</label>
                 <textarea
                   id="message"
                   name="message"
@@ -127,11 +156,12 @@ function Contact() {
                   required
                   rows="4"
                   placeholder="Tell us about your requirements"
+                  minLength="10"
                 ></textarea>
               </div>
 
-              <button type="submit" className="submit-btn">
-                Send Message
+              <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
