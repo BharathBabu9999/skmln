@@ -1,4 +1,6 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Banner from './components/Banner';
 import Header from './components/Header';
@@ -10,10 +12,17 @@ import Reviews from './components/Reviews';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AdSlot from './components/AdSlot';
+import Dashboard from './components/Dashboard';
+import { trackVisitor, trackPageView } from './lib/analytics';
 
-function App() {
+function MainPage() {
+  useEffect(() => {
+    trackVisitor();
+    trackPageView('Home');
+  }, []);
+
   return (
-    <div className="App">
+    <>
       <Header />
       <Banner />
       <Hero />
@@ -41,7 +50,20 @@ function App() {
       <About />
       
       <Footer />
-    </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/admin" element={<Dashboard />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

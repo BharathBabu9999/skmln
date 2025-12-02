@@ -80,6 +80,24 @@
   margin-bottom: 0.5rem;
 }
 
+.footer-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+.stat-item {
+  color: #93c5fd;
+  font-weight: 500;
+}
+
+.stat-divider {
+  color: #95a5a6;
+}
+
 @media (max-width: 768px) {
   .footer {
     padding: 3rem 0 1.5rem;

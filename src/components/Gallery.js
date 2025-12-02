@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import "./Gallery.css";
+import React, { useState } from 'react';
+import { trackFeature } from '../lib/analytics';
+import './Gallery.css';
 
 function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -82,6 +83,7 @@ function Gallery() {
 
   const openImage = (image) => {
     setSelectedImage(image);
+    trackFeature('Gallery', `Viewed ${image.title}`);
   };
 
   const closeImage = () => {

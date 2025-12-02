@@ -1,8 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { supabase } from '../lib/supabase';
 import './Footer.css';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
+  const [stats, setStats] = useState({ visitors: 0, pageViews: 0 });
+
+  useEffect(() => {
+    fetchStats();
+  }, []);
+
+  const fetchStats = async () => {
+    try {
+      const { count: visitorsCount } = await supabase
+        .from('visitors')
+        .select('*', { count: 'exact', head: true });
+
+      const { count: pageViewsCount } = await supabase
+        .from('page_views')
+        .select('*', { count: 'exact', head: true });
+
+      setStats({
+        visitors: visitorsCount || 0,
+        pageViews: pageViewsCount || 0
+      });
+    } catch (error) {
+      console.error('Error fetching stats:', error);
+    }
+  };
 
   return (
     <footer className="footer">
@@ -48,6 +73,11 @@ function Footer() {
 
         <div className="footer-bottom">
           <p>&copy; {currentYear} Sree Kanaka Maha Lakshmi Nilayam. All rights reserved.</p>
+          <div className="footer-stats">
+            <span className="stat-item">👥 {stats.visitors} Visitors</span>
+            <span className="stat-divider">•</span>
+            <span className="stat-item">👁️ {stats.pageViews} Page Views</span>
+          </div>
           <p>Built with care for quality living</p>
         </div>
       </div>

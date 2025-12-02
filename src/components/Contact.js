@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { trackInquiry } from '../lib/analytics';
 import './Contact.css';
 
 function Contact() {
@@ -38,6 +39,8 @@ function Contact() {
     emailjs.send(serviceId, templateId, templateParams, publicKey)
       .then((response) => {
         console.log('Email sent successfully!', response.status, response.text);
+        // Track the inquiry in analytics
+        trackInquiry(formData.name, formData.phone, formData.message);
         alert('Thank you for your interest! We will contact you soon.');
         setFormData({ name: '', email: '', phone: '', message: '' });
         setIsSubmitting(false);

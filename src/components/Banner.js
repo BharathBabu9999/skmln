@@ -1,7 +1,11 @@
 import React from 'react';
+import { trackFeature } from '../lib/analytics';
 import './Banner.css';
 
 function Banner() {
+  const handlePhoneClick = (phone) => {
+    trackFeature('Banner', `Called ${phone}`);
+  };
   return (
     <div className="sticky-banner">
       <div className="banner-content">
