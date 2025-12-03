@@ -18,6 +18,7 @@ A modern, responsive React website for Sree Kanaka Maha Lakshmi Nilayam resident
 - 📱 **Fully Responsive** - Works seamlessly on desktop, tablet, and mobile
 - 🎨 **Minimal Design** - Clean, professional aesthetic with subtle colors
 - 📊 **Live Visitor Stats** - Footer displays real-time visitor count and page views
+- 🔗 **Admin Dashboard Link** - Quick access to analytics from footer
 
 ### Analytics & Tracking (Supabase)
 - 👥 **Visitor Tracking** - Unique visitor identification and counting
@@ -29,16 +30,19 @@ A modern, responsive React website for Sree Kanaka Maha Lakshmi Nilayam resident
 - 🗣️ **Language Preferences** - Automatic browser language detection
 
 ### Admin Dashboard (`/admin`)
+- 🔐 **Password Protected** - Secure access with configurable password
 - 📊 **Real-time Stats** - Total visitors, page views, inquiries, conversion rate
 - 🔥 **Top Pages** - Most viewed pages with percentage bars
 - ⭐ **Popular Features** - Most clicked features and interactions
 - 🌍 **Visitor Locations** - Geographic breakdown by country, city, and device
 - 📝 **Recent Inquiries** - Latest form submissions with contact details
 - 🔄 **Auto-refresh** - Updates every 30 seconds + manual refresh button
+- 🏠 **Home Navigation** - Quick link back to main website
 
 ### Email Integration (EmailJS)
 - ✉️ **Instant Notifications** - Contact form submissions sent via email
-- ✅ **Required Fields** - Name, Phone (10 digits), Message (min 10 chars)
+- ✅ **Required Fields** - Name, Phone (10 digits), Message (10-175 chars)
+- 📊 **Character Counter** - Live character count display for message field
 - 🔒 **Environment Variables** - Secure credential management
 
 ## 🚀 Quick Start
@@ -65,12 +69,13 @@ A modern, responsive React website for Sree Kanaka Maha Lakshmi Nilayam resident
 3. **Set up environment variables:**
    
    Create a `.env` file in the root directory:
-   ```env
    REACT_APP_EMAILJS_SERVICE_ID=your_service_id
    REACT_APP_EMAILJS_TEMPLATE_ID=your_template_id
    REACT_APP_EMAILJS_PUBLIC_KEY=your_public_key
    REACT_APP_SUPABASE_URL=your_supabase_url
    REACT_APP_SUPABASE_ANON_KEY=your_anon_key
+   REACT_APP_ADMIN_PASSWORD=your_admin_password
+   ```CT_APP_SUPABASE_ANON_KEY=your_anon_key
    ```
 
 4. **Set up Supabase database:**
@@ -367,13 +372,14 @@ Add environment variables in Vercel dashboard.
 **Important:** Don't forget to add environment variables in your deployment platform!
 
 ## 📝 Environment Variables
-
 | Variable | Description | Required |
 |----------|-------------|----------|
 | `REACT_APP_EMAILJS_SERVICE_ID` | EmailJS service ID | Yes |
 | `REACT_APP_EMAILJS_TEMPLATE_ID` | EmailJS template ID | Yes |
 | `REACT_APP_EMAILJS_PUBLIC_KEY` | EmailJS public key | Yes |
 | `REACT_APP_SUPABASE_URL` | Supabase project URL | Yes |
+| `REACT_APP_SUPABASE_ANON_KEY` | Supabase anonymous key | Yes |
+| `REACT_APP_ADMIN_PASSWORD` | Admin dashboard password (default: admin123) | Yes |
 | `REACT_APP_SUPABASE_ANON_KEY` | Supabase anonymous key | Yes |
 
 ## 🔒 Security

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { getAnalyticsSummary } from '../lib/analytics';
 import './Dashboard.css';
 
@@ -6,13 +7,20 @@ function Dashboard() {
   const [analytics, setAnalytics] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState('');
+  const [authError, setAuthError] = useState('');
+
+  const ADMIN_PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD || 'admin123';
 
   useEffect(() => {
-    loadAnalytics();
-    // Refresh analytics every 30 seconds
-    const interval = setInterval(loadAnalytics, 30000);
-    return () => clearInterval(interval);
-  }, []);
+    if (isAuthenticated) {
+      loadAnalytics();
+      // Refresh analytics every 30 seconds
+      const interval = setInterval(loadAnalytics, 30000);
+      return () => clearInterval(interval);
+    }
+  }, [isAuthenticated]);
 
   const loadAnalytics = async () => {
     try {
@@ -27,6 +35,45 @@ function Dashboard() {
       setLoading(false);
     }
   };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (password === ADMIN_PASSWORD) {
+      setIsAuthenticated(true);
+      setAuthError('');
+    } else {
+      setAuthError('Incorrect password. Please try again.');
+      setPassword('');
+    }
+  };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="dashboard">
+        <div className="login-container">
+          <div className="login-box">
+            <h1>🔒 Admin Access</h1>
+            <p>Enter password to view analytics dashboard</p>
+            <form onSubmit={handleLogin}>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter admin password"
+                className="password-input"
+                autoFocus
+              />
+              {authError && <p className="auth-error">{authError}</p>}
+              <button type="submit" className="login-btn">
+                Access Dashboard
+              </button>
+            </form>
+            <Link to="/" className="back-home">← Back to Home</Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (loading && !analytics) {
     return (
@@ -57,7 +104,10 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <div className="dashboard-header">
-        <h1>📊 Analytics Dashboard</h1>
+        <div className="header-left">
+          <h1>📊 Analytics Dashboard</h1>
+          <Link to="/" className="home-link">🏠 Home</Link>
+        </div>
         <button onClick={loadAnalytics} className="refresh-btn">
           🔄 Refresh
         </button>

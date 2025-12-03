@@ -98,6 +98,18 @@
   color: #95a5a6;
 }
 
+.admin-link-footer {
+  color: #93c5fd;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.admin-link-footer:hover {
+  color: #60a5fa;
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
   .footer {
     padding: 3rem 0 1.5rem;

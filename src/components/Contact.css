@@ -109,6 +109,13 @@
   min-height: 100px;
 }
 
+.char-count {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  text-align: right;
+}
+
 .submit-btn {
   padding: 1rem 2rem;
   background: #2563eb;

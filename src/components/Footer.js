@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import './Footer.css';
 
@@ -77,6 +78,8 @@ function Footer() {
             <span className="stat-item">👥 {stats.visitors} Visitors</span>
             <span className="stat-divider">•</span>
             <span className="stat-item">👁️ {stats.pageViews} Page Views</span>
+            <span className="stat-divider">•</span>
+            <Link to="/admin" className="admin-link-footer">📊 Analytics</Link>
           </div>
           <p>Built with care for quality living</p>
         </div>

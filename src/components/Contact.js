@@ -40,7 +40,7 @@ function Contact() {
       .then((response) => {
         console.log('Email sent successfully!', response.status, response.text);
         // Track the inquiry in analytics
-        trackInquiry(formData.name, formData.phone, formData.message);
+        trackInquiry(formData);
         alert('Thank you for your interest! We will contact you soon.');
         setFormData({ name: '', email: '', phone: '', message: '' });
         setIsSubmitting(false);
@@ -150,7 +150,7 @@ function Contact() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="message">Message *</label>
+                <label htmlFor="message">Message * (Max 175 characters)</label>
                 <textarea
                   id="message"
                   name="message"
@@ -160,7 +160,9 @@ function Contact() {
                   rows="4"
                   placeholder="Tell us about your requirements"
                   minLength="10"
+                  maxLength="175"
                 ></textarea>
+                <small className="char-count">{formData.message.length}/175</small>
               </div>
 
               <button type="submit" className="submit-btn" disabled={isSubmitting}>
