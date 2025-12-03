@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
+import { CONTACT_PHONES } from '../config/constants';
 import './Footer.css';
 
 function Footer() {
@@ -57,9 +58,9 @@ function Footer() {
             <h4>Contact</h4>
             <ul>
               <li>📍 7th Road, Sriram Nagar, Eluru</li>
-              <li>📞 <a href="tel:9246789369">9246789369</a></li>
-              <li>📞 <a href="tel:9948999394">9948999394</a></li>
-              <li>📞 <a href="tel:9502942957">9502942957</a></li>
+              {CONTACT_PHONES.map((phone) => (
+                <li key={phone}>📞 <a href={`tel:${phone}`}>{phone}</a></li>
+              ))}
             </ul>
           </div>
 

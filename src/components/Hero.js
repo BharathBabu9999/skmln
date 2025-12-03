@@ -8,7 +8,7 @@ function Hero() {
       <div className="hero-overlay"></div>
       <div className="container hero-content">
         <h1 className="hero-title">Sree Kanaka Maha Lakshmi Nilayam</h1>
-        <p className="hero-subtitle">Premium 2BHK Residential Apartments in Sriram Nagar, Eluru - Where Quality Meets Comfort</p>
+        <p className="hero-subtitle">Reliable 2BHK Residential Apartments in Sriram Nagar, Eluru - Where Quality Meets Comfort</p>
         <div className="hero-features">
           <div className="hero-feature">
             <span className="feature-icon">⭐</span>

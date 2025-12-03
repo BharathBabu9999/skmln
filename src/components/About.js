@@ -10,7 +10,7 @@ function About() {
         <div className="about-content">
           <div className="about-text">
             <p>
-              Sree Kanaka Maha Lakshmi Nilayam is a premium residential building in Sriram Nagar, Eluru, Andhra Pradesh. 
+              Sree Kanaka Maha Lakshmi Nilayam is a reliable residential building in Sriram Nagar, Eluru, Andhra Pradesh. 
               Built with superior construction materials and expert craftsmanship, we offer quality 2BHK apartments with 
               excellent east-facing ventilation. Located on 7th Road, residents enjoy easy access to schools, hospitals, 
               shopping centers, and public transport.

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { trackInquiry } from '../lib/analytics';
+import { CONTACT_PHONES, PHONE_1 } from '../config/constants';
 import './Contact.css';
 
 function Contact() {
@@ -47,7 +48,7 @@ function Contact() {
       })
       .catch((error) => {
         console.error('Failed to send email:', error);
-        alert('Sorry, there was an error sending your message. Please call us directly at 9246789369.');
+        alert(`Sorry, there was an error sending your message. Please call us directly at ${PHONE_1}.`);
         setIsSubmitting(false);
       });
   };
@@ -81,9 +82,9 @@ function Contact() {
               <div className="info-icon">📞</div>
               <div>
                 <h4>Phone Numbers</h4>
-                <p><a href="tel:9246789369">9246789369</a></p>
-                <p><a href="tel:9948999394">9948999394</a></p>
-                <p><a href="tel:9502942957">9502942957</a></p>
+                {CONTACT_PHONES.map((phone) => (
+                  <p key={phone}><a href={`tel:${phone}`}>{phone}</a></p>
+                ))}
               </div>
             </div>
 
