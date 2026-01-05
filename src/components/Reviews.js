@@ -1,8 +1,7 @@
 import React from "react";
 import "./Reviews.css";
 
-function Reviews() {
-  const reviews = [
+export const reviewsData = [
     {
       id: 1,
       name: "Bharath Babu",
@@ -70,20 +69,28 @@ function Reviews() {
     },
   ];
 
+function Reviews() {
   const renderStars = (rating) => {
     return "⭐".repeat(rating);
   };
+
+  // Calculate average rating
+  const averageRating = reviewsData.length > 0
+    ? (reviewsData.reduce((sum, review) => sum + review.rating, 0) / reviewsData.length).toFixed(1)
+    : 0;
+  
+  const fullStars = Math.floor(averageRating);
 
   return (
     <section id="reviews" className="section reviews-section">
       <div className="container">
         <h2 className="section-title">What Our Residents Say</h2>
         <p className="section-subtitle">
-          Rated 5.0 ⭐ based on 9 Google reviews
+          Rated {averageRating} ⭐ based on {reviewsData.length} Google review{reviewsData.length !== 1 ? 's' : ''}
         </p>
 
         <div className="reviews-grid">
-          {reviews.map((review) => (
+          {reviewsData.map((review) => (
             <div key={review.id} className="review-card">
               <div className="review-header">
                 <div className="reviewer-info">
@@ -104,12 +111,12 @@ function Reviews() {
 
         <div className="reviews-summary">
           <div className="summary-card">
-            <div className="summary-number">5.0</div>
-            <div className="summary-stars">⭐⭐⭐⭐⭐</div>
+            <div className="summary-number">{averageRating}</div>
+            <div className="summary-stars">{"⭐".repeat(fullStars)}</div>
             <div className="summary-text">Perfect Rating</div>
           </div>
           <div className="summary-card">
-            <div className="summary-number">9</div>
+            <div className="summary-number">{reviewsData.length}</div>
             <div className="summary-icon">💬</div>
             <div className="summary-text">Total Reviews</div>
           </div>

@@ -265,7 +265,7 @@ bash rename-images.sh
 - **Name:** Sree Kanaka Maha Lakshmi Nilayam
 - **Location:** 7th Road, Sriram Nagar, Eluru, Andhra Pradesh 534003
 - **Type:** 2BHK Apartments
-- **Rating:** 5.0 ⭐ (8 Google Reviews)
+- **Rating:** 5.0 ⭐ (9 Google Reviews)
 
 ### Key Features
 - ✅ Excellent ventilation

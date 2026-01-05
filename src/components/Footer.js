@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import { CONTACT_PHONES } from '../config/constants';
+import { reviewsData } from './Reviews';
 import './Footer.css';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
   const [stats, setStats] = useState({ visitors: 0, pageViews: 0 });
+  const reviewCount = reviewsData.length;
 
   useEffect(() => {
     fetchStats();
@@ -40,7 +42,7 @@ function Footer() {
             <p>Quality residential apartments in the heart of Eluru, offering comfortable living with modern amenities.</p>
             <div className="footer-rating">
               <span className="rating-badge">⭐ 5.0 Rating</span>
-              <span>8 Google Reviews</span>
+              <span>{reviewCount} Google Review{reviewCount !== 1 ? 's' : ''}</span>
             </div>
           </div>
 
