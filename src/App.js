@@ -28,22 +28,22 @@ function MainPage() {
       <Hero />
       
       {/* Ad Slot 1 - After Hero */}
-      <AdSlot slotId="ad-slot-1" format="horizontal" />
+      <AdSlot slotId="ad-slot-1" slot="6288729604" format="auto" />
       
       <Features />
       
       {/* Ad Slot 2 - After Features */}
-      <AdSlot slotId="ad-slot-2" format="auto" />
+      <AdSlot slotId="ad-slot-2" slot="2749279155" format="auto" />
       
       <Gallery />
       
       {/* Ad Slot 3 - After Gallery */}
-      <AdSlot slotId="ad-slot-3" format="horizontal" />
+      <AdSlot slotId="ad-slot-3" slot="8918762371" format="auto" />
       
       <Reviews />
       
       {/* Ad Slot 4 - After Reviews */}
-      <AdSlot slotId="ad-slot-4" format="auto" />
+      <AdSlot slotId="ad-slot-4" slot="1436197482" format="auto" />
       
       <Contact />
       

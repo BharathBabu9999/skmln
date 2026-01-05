@@ -17,11 +17,6 @@ function AdSlot({ slotId, slot, format = 'auto' }) {
     }
   }, [slot]);
 
-  // Don't render if no slot ID is provided
-  if (!slot) {
-    return null;
-  }
-
   return (
     <div className="ad-container">
       <div className="ad-label">Advertisement</div>
@@ -33,7 +28,7 @@ function AdSlot({ slotId, slot, format = 'auto' }) {
         <ins className="adsbygoogle"
              style={{display: 'block'}}
              data-ad-client="ca-pub-4590203248992711"
-             data-ad-slot={slot}
+             {...(slot && { 'data-ad-slot': slot })}
              data-ad-format={format === 'horizontal' ? 'horizontal' : 'auto'}
              data-full-width-responsive={format === 'auto' ? 'true' : 'false'}></ins>
       </div>
